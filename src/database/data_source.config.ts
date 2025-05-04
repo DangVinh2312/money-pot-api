@@ -14,6 +14,9 @@ export const ormConfig: DataSourceOptions = {
   schema: process.env.DATABASE_SCHEMA,
   extra: {
     socketPath: process.env.DATABASE_SOCKET_PATH || undefined,
+    ...(process.env.DATABASE_SSL_MODE
+      ? { ssl: { rejectUnauthorized: process.env.DATABASE_SSL_MODE } }
+      : {}),
   },
   entities: [join(__dirname, '../entities/**/*.entity{.ts,.js}')],
   migrations: [join(__dirname, './migrations/*{.ts,.js}')],
