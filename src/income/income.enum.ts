@@ -1,0 +1,8 @@
+export enum EIncome {
+  SALARY = 'SALARY',
+  BONUS = 'BONUS',
+  REVENUE = 'REVENUE',
+  INVESTMENT = 'INVESTMENT',
+  ALLOWANCE = 'ALLOWANCE',
+  OTHER = 'OTHER',
+}
