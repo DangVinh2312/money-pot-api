@@ -1,4 +1,3 @@
-import { EIncome } from 'src/income/income.enum';
 import { Column, Entity, ManyToOne } from 'typeorm';
 import { Base } from './base.entity';
 import { Quota } from './quota.entity';
@@ -6,10 +5,7 @@ import { User } from './user.entity';
 
 @Entity()
 export class Income extends Base {
-  @Column({
-    type: 'enum',
-    enum: EIncome,
-  })
+  @Column()
   name: string;
 
   @Column()

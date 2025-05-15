@@ -5,9 +5,6 @@ import { User } from './user.entity';
 @Entity()
 export class Wallet extends Base {
   @Column()
-  icon: string;
-
-  @Column()
   name: string;
 
   @ManyToOne(() => User, (user) => user.id)
