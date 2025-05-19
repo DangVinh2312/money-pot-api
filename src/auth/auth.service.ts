@@ -2,6 +2,7 @@ import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
+import { log } from 'console';
 import { calculateHMacSHA256 } from 'src/common/utils/encode';
 import { UserRepository } from 'src/shared/user/user.repository';
 import { TZaloOAUser } from './auth.type';
@@ -17,6 +18,7 @@ export class AuthService {
 
   async login(accessToken: string) {
     const zaloOAUser = await this.getUserFromAccessToken(accessToken);
+
     await this.userRepository.upsert(zaloOAUser, {
       conflictPaths: {
         id: true,
@@ -55,6 +57,8 @@ export class AuthService {
         responseType: 'json',
       },
     );
+
+    log(response.data);
 
     return response.data;
   }
